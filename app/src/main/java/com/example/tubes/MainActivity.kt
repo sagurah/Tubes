@@ -34,7 +34,6 @@ class MainActivity : AppCompatActivity() {
         val bundle = intent.extras
         if (bundle != null) {
             username.setText(bundle.getString("username"))
-            password.setText(bundle.getString("password"))
         }
     }
 }

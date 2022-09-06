@@ -3,14 +3,10 @@ package com.example.tubes
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-public class MainMenu extends AppCompatActivity() {
+class MainMenu : AppCompatActivity() {
 
-    ActivityMainBinding binding;
-    @Override
-    protected void onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-
+        setContentView(R.layout.activity_main_menu);
     }
 }
