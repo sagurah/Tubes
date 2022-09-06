@@ -11,7 +11,7 @@
         android:id="@+id/imageView"
         android:layout_width="240dp"
         android:layout_height="240dp"
-        android:layout_marginTop="135dp"
+        android:layout_marginTop="32dp"
         android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,6 +40,7 @@
             app:helperText="Input your Username">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"/>
@@ -57,6 +58,7 @@
             app:helperText="Input your Password">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"/>
@@ -76,7 +78,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnClear"
-            android:layout_width="wrap_content"
+            android:layout_width="85dp"
             android:layout_height="wrap_content"
             android:backgroundTint="#FFE135"
             android:layout_marginEnd="5dp"
@@ -111,7 +113,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="Don't have an account ? Click here"
+            android:text="Don't have an account ? Click here to"
             android:textColor="@color/black"
             android:textSize="12dp"
             android:textStyle="italic"
