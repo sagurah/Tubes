@@ -73,12 +73,12 @@ class RegisterActivity : AppCompatActivity() {
                 && !noTelp.isEmpty()
             ) checkRegistration = true
 
-            if(checkRegistration)
+            if(!checkRegistration)
                 return@OnClickListener
 
             bundle.putString("username", uname)
             bundle.putString("password", pass)
-            val moveLogin = Intent(this@RegisterActivity, MainActivity::class.java)
+            val moveLogin = Intent(this, MainActivity::class.java)
             moveLogin.putExtras(bundle)
 
             startActivity(moveLogin)
