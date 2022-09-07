@@ -67,8 +67,11 @@ class MainActivity : AppCompatActivity() {
 
             if(!checkLogin)
                 return@OnClickListener
-            else
-                Snackbar.make(mainLayout, "Anda berhasil login!", Snackbar.LENGTH_LONG).show() // Tinggal diganti Intent ke layout MainMenu
+            else{
+                val intent = Intent(this, MainMenu::class.java)
+                startActivity(intent)
+            }
+//                Snackbar.make(mainLayout, "Anda berhasil login!", Snackbar.LENGTH_LONG).show() // Tinggal diganti Intent ke layout MainMenu
         })
     }
 
