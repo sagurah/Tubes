@@ -5,6 +5,7 @@
     android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#A7D2CB"
     tools:context=".MainActivity">
 
     <ImageView
@@ -12,7 +13,7 @@
         android:layout_width="240dp"
         android:layout_height="240dp"
         android:layout_marginTop="32dp"
-        android:src="@drawable/logo"
+        android:src="@drawable/removedbg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -37,7 +38,8 @@
             app:errorEnabled="true"
             app:startIconDrawable="@drawable/ic_user_24"
             android:layout_marginBottom="8dp"
-            app:helperText="Input your Username">
+            app:helperText="Input your Username"
+            app:helperTextTextColor="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textUsername"
@@ -55,7 +57,8 @@
             android:hint="Password"
             app:errorEnabled="true"
             app:startIconDrawable="@drawable/ic_lock_24"
-            app:helperText="Input your Password">
+            app:helperText="Input your Password"
+            app:helperTextTextColor="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textPassword"
