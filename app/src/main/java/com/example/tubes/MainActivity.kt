@@ -65,13 +65,14 @@ class MainActivity : AppCompatActivity() {
                 ) checkLogin = true
             }
 
-            if(!checkLogin)
+            if(!checkLogin){
+                Snackbar.make(mainLayout, "Username atau Password anda tidak sesuai", Snackbar.LENGTH_LONG).show()
                 return@OnClickListener
+            }
             else{
                 val intent = Intent(this, MainMenu::class.java)
                 startActivity(intent)
             }
-//                Snackbar.make(mainLayout, "Anda berhasil login!", Snackbar.LENGTH_LONG).show() // Tinggal diganti Intent ke layout MainMenu
         })
     }
 
