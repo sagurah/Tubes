@@ -1,7 +1,12 @@
 package com.example.tubes
 
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -30,6 +35,26 @@ class MainMenu : AppCompatActivity() {
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.frame_layout,fragment)
         fragmentTransaction.commit()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val menuInflater = MenuInflater(this)
+        menuInflater.inflate(R.menu.home_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == R.id.menu_logout) {
+            val builder : AlertDialog.Builder = AlertDialog.Builder(this@MainMenu)
+            builder.setMessage("Are you sure you want to exit?")
+                .setPositiveButton("YES", object : DialogInterface.OnClickListener{
+                    override fun onClick(dialogInterface: DialogInterface, i: Int) {
+                        finishAndRemoveTask()
+                    }
+                })
+                .show()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
 
