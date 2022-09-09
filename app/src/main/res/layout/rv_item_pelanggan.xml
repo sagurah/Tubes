@@ -45,12 +45,12 @@
         android:layout_marginEnd="16dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:text="Umur Pelanggan"
+        android:text="Nomor Telpon Pelanggan"
         android:textColor="@color/black"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/namaPelanggan" />
+        app:layout_constraintTop_toBottomOf="@+id/umurPelanggan" />
 
     <TextView
         android:id="@+id/tglMulai"
@@ -79,6 +79,7 @@
         android:textColor="@color/black"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tglMulai" />
 
