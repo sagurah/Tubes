@@ -1,6 +1,8 @@
 package com.example.tubes
 
+import android.app.Dialog
 import android.content.DialogInterface
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -46,12 +48,18 @@ class MainMenu : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.itemId == R.id.menu_logout) {
             val builder : AlertDialog.Builder = AlertDialog.Builder(this@MainMenu)
-            builder.setMessage("Are you sure you want to exit?")
+            builder.setMessage("Are you sure you want to logout?")
                 .setPositiveButton("YES", object : DialogInterface.OnClickListener{
                     override fun onClick(dialogInterface: DialogInterface, i: Int) {
                         finishAndRemoveTask()
                     }
                 })
+                .show()
+            builder.setNegativeButton("NO", object : DialogInterface.OnClickListener{
+                override fun onClick(dialogInterface: DialogInterface, i: Int){
+
+                }
+            })
                 .show()
         }
         return super.onOptionsItemSelected(item)
