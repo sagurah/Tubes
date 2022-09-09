@@ -6,12 +6,10 @@
     android:background="@color/white"
     tools:context=".PlansFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Plans Fragment"
-        android:textSize="26dp"
-        android:layout_gravity="top"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_pelanggan"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/rv_item_pelanggan"/>
 
 </FrameLayout>
