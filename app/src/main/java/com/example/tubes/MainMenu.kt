@@ -10,6 +10,9 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import com.example.tubes.main_fragment.HomeFragment
+import com.example.tubes.main_fragment.ProfileFragment
+import com.example.tubes.main_fragment.SettingsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainMenu : AppCompatActivity() {
