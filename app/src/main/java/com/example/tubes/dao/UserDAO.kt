@@ -3,6 +3,7 @@ package com.example.tubes.dao
 import androidx.room.*
 import com.example.tubes.entity.User
 
+@Dao
 interface UserDAO {
     @Insert
     suspend fun addUser(user: User)
