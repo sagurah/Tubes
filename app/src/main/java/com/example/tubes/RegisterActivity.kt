@@ -6,62 +6,54 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.example.tubes.databinding.ActivityMainMenuBinding
+import com.example.tubes.databinding.ActivityRegisterBinding
 import com.google.android.material.textfield.TextInputLayout
 
 class RegisterActivity : AppCompatActivity() {
 
-    private lateinit var inputUsername : TextInputLayout
-    private lateinit var inputPassword : TextInputLayout
-    private lateinit var inputTanggal : TextInputLayout
-    private lateinit var inputEmail : TextInputLayout
-    private lateinit var inputNoTelp : TextInputLayout
-    private lateinit var mainLayout : ConstraintLayout
+    var binding : ActivityRegisterBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
+//        setContentView(R.layout.activity_register)
+        binding = ActivityRegisterBinding.inflate(layoutInflater)
+        setContentView(binding?.root)
 
-        inputUsername = findViewById(R.id.registerLayoutUsername)
-        inputPassword = findViewById(R.id.registerLayoutPassword)
-        inputTanggal = findViewById(R.id.registerLayoutTanggalLahir)
-        inputEmail = findViewById(R.id.registerLayoutEmail)
-        inputNoTelp = findViewById(R.id.registerLayoutNoTelp)
-
-        mainLayout = findViewById(R.id.registerLayout)
         val btnRegister : Button = findViewById(R.id.btnRegister)
 
         btnRegister.setOnClickListener(View.OnClickListener{
             var checkRegistration = false
-            val uname: String = inputUsername.getEditText()?.getText().toString()
-            val pass: String = inputPassword.getEditText()?.getText().toString()
-            val tgl: String = inputTanggal.getEditText()?.getText().toString()
-            val email: String = inputEmail.getEditText()?.getText().toString()
-            val noTelp: String = inputNoTelp.getEditText()?.getText().toString()
+            val uname: String = binding?.registerLayoutUsername?.getEditText()?.getText().toString()
+            val pass: String = binding?.registerLayoutPassword?.getEditText()?.getText().toString()
+            val tgl: String = binding?.registerLayoutTanggalLahir?.getEditText()?.getText().toString()
+            val email: String = binding?.registerLayoutEmail?.getEditText()?.getText().toString()
+            val noTelp: String = binding?.registerLayoutNoTelp?.getEditText()?.getText().toString()
 
             val bundle = Bundle()
 
             if(uname.isEmpty()){
-                inputUsername.setError("Username tidak boleh kosong")
+                binding?.registerLayoutUsername?.setError("Username tidak boleh kosong")
                 checkRegistration = false
             }
 
             if(pass.isEmpty()){
-                inputPassword.setError("Password tidak boleh kosong")
+                binding?.registerLayoutPassword?.setError("Password tidak boleh kosong")
                 checkRegistration = false
             }
 
             if(tgl.isEmpty()){
-                inputTanggal.setError("Tanggal Lahir tidak boleh kosong")
+                binding?.registerLayoutTanggalLahir?.setError("Tanggal Lahir tidak boleh kosong")
                 checkRegistration = false
             }
 
             if(email.isEmpty()){
-                inputEmail.setError("Email tidak boleh kosong")
+                binding?.registerLayoutEmail?.setError("Email tidak boleh kosong")
                 checkRegistration = false
             }
 
             if(noTelp.isEmpty()){
-                inputNoTelp.setError("Nomor Telepon tidak boleh kosong")
+                binding?.registerLayoutNoTelp?.setError("Nomor Telepon tidak boleh kosong")
                 checkRegistration = false
             }
 

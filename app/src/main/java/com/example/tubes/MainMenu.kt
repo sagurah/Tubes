@@ -10,6 +10,8 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import com.example.tubes.databinding.ActivityMainBinding
+import com.example.tubes.databinding.ActivityMainMenuBinding
 import com.example.tubes.main_fragment.HomeFragment
 import com.example.tubes.main_fragment.ProfileFragment
 import com.example.tubes.main_fragment.SettingsFragment
@@ -17,14 +19,16 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainMenu : AppCompatActivity() {
 
-    private lateinit var binding : BottomNavigationView
+    var binding : ActivityMainMenuBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_menu)
+//        setContentView(R.layout.activity_main_menu)
+        binding = ActivityMainMenuBinding.inflate(layoutInflater)
+        setContentView(binding?.root)
         replaceFragment(HomeFragment())
-        binding = findViewById(R.id.bottomNavigationView)
-        binding.setOnItemSelectedListener{ item->
+
+        binding?.bottomNavigationView?.setOnItemSelectedListener{ item->
             when(item.itemId){
                 R.id.home -> replaceFragment(HomeFragment())
                 R.id.profile -> replaceFragment(ProfileFragment())
