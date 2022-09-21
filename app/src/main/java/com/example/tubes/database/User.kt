@@ -1,4 +1,4 @@
-package com.example.tubes.entity
+package com.example.tubes.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

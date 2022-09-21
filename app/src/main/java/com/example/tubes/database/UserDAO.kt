@@ -1,7 +1,6 @@
-package com.example.tubes.dao
+package com.example.tubes.database
 
 import androidx.room.*
-import com.example.tubes.entity.User
 
 @Dao
 interface UserDAO {
@@ -15,8 +14,8 @@ interface UserDAO {
     suspend fun deleteUser(user: User)
 
     @Query("SELECT * FROM user")
-    suspend fun getNotes() : List<User>
+    suspend fun getUser() : List<User>
 
     @Query("SELECT * FROM user WHERE id =:user_id")
-    suspend fun getNote(user_id: Int) : List<User>
+    suspend fun getUser(user_id: Int) : List<User>
 }
