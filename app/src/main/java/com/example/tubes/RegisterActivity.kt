@@ -20,9 +20,7 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
-        val btnRegister : Button = findViewById(R.id.btnRegister)
-
-        btnRegister.setOnClickListener(View.OnClickListener{
+        binding?.btnRegister?.setOnClickListener(View.OnClickListener{
             var checkRegistration = false
             val uname: String = binding?.registerLayoutUsername?.getEditText()?.getText().toString()
             val pass: String = binding?.registerLayoutPassword?.getEditText()?.getText().toString()
