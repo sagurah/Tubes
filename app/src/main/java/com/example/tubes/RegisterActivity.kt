@@ -38,48 +38,50 @@ class RegisterActivity : AppCompatActivity() {
 
             val bundle = Bundle()
 
-            if(uname.isEmpty()){
-                binding?.registerLayoutUsername?.setError("Username tidak boleh kosong")
-                checkRegistration = false
-            }
+            CoroutineScope(Dispatchers.IO).launch {
+                if(uname.isEmpty()){
+                    binding?.registerLayoutUsername?.setError("Username tidak boleh kosong")
+                    checkRegistration = false
+                }
 
-            if(pass.isEmpty()){
-                binding?.registerLayoutPassword?.setError("Password tidak boleh kosong")
-                checkRegistration = false
-            }
+                if(pass.isEmpty()){
+                    binding?.registerLayoutPassword?.setError("Password tidak boleh kosong")
+                    checkRegistration = false
+                }
 
-            if(tgl.isEmpty()){
-                binding?.registerLayoutTanggalLahir?.setError("Tanggal Lahir tidak boleh kosong")
-                checkRegistration = false
-            }
+                if(tgl.isEmpty()){
+                    binding?.registerLayoutTanggalLahir?.setError("Tanggal Lahir tidak boleh kosong")
+                    checkRegistration = false
+                }
 
-            if(email.isEmpty()){
-                binding?.registerLayoutEmail?.setError("Email tidak boleh kosong")
-                checkRegistration = false
-            }
+                if(email.isEmpty()){
+                    binding?.registerLayoutEmail?.setError("Email tidak boleh kosong")
+                    checkRegistration = false
+                }
 
-            if(noTelp.isEmpty()){
-                binding?.registerLayoutNoTelp?.setError("Nomor Telepon tidak boleh kosong")
-                checkRegistration = false
-            }
+                if(noTelp.isEmpty()){
+                    binding?.registerLayoutNoTelp?.setError("Nomor Telepon tidak boleh kosong")
+                    checkRegistration = false
+                }
 
-            if(
-                !uname.isEmpty()
-                && !pass.isEmpty()
-                && !tgl.isEmpty()
-                && !email.isEmpty()
-                && !noTelp.isEmpty()
-            ) checkRegistration = true
+                if(
+                    !uname.isEmpty()
+                    && !pass.isEmpty()
+                    && !tgl.isEmpty()
+                    && !email.isEmpty()
+                    && !noTelp.isEmpty()
+                ) checkRegistration = true
 
-            // Store registration data after validation
-            if(checkRegistration == true){
-                val user = User(0, uname, pass, tgl, email, noTelp)
-                UserDAO.deleteUser(user)
-                // Masukin pengecekkan register semua
-                // di dalam CoroutineScope(Dispatchers.IO).launch{}
-                bundle.putString("username", uname)
-                bundle.putString("password", pass)
+                // Store registration data after validation
+                if(checkRegistration == true){
+                    val user = User(0, uname, pass, tgl, email, noTelp)
+                    UserDAO.addUser(user)
+                    // Masukin pengecekkan register semua
+                    // di dalam CoroutineScope(Dispatchers.IO).launch{}
+                    bundle.putString("username", uname)
+                    bundle.putString("password", pass)
 
+                }
             }
 
             if(!checkRegistration)
