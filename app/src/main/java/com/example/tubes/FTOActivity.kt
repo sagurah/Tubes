@@ -13,7 +13,7 @@ class FTOActivity : AppCompatActivity() {
         val settings = getSharedPreferences("prefs", 0)
         val firstRun = settings.getBoolean("firstRun", false)
 
-        if (firstRun == false)//if running for the first time
+        if (firstRun == true)//if running for the first time
         //Splash will load for the first time
         {
             val editor = settings.edit()

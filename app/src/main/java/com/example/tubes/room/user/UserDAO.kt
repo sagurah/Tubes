@@ -1,4 +1,4 @@
-package com.example.tubes.database
+package com.example.tubes.room.user
 
 import androidx.room.*
 
@@ -18,4 +18,11 @@ interface UserDAO {
 
     @Query("SELECT * FROM user WHERE id =:user_id")
     suspend fun getUser(user_id: Int) : List<User>
+
+    @Query("SELECT * FROM user WHERE username =:username AND password =:password")
+    suspend fun getUserByCreds(username: String, password: String): User?
+
+    @Query("SELECT * FROM user WHERE username =:username AND email =:email")
+    suspend fun getUserByUsernameEmail(username: String, email: String): User?
+
 }
