@@ -83,7 +83,6 @@ class RegisterActivity : AppCompatActivity() {
                     moveLogin.putExtras(bundle)
 
                     startActivity(moveLogin)
-
                 }
             }
 

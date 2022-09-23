@@ -19,7 +19,6 @@ class RVPelangganAdapter(private val data: Array<Pelanggan>) : RecyclerView.Adap
         val currentItem = data[position]
         holder.tvNama.text = currentItem.name
         holder.tvUmur.text = currentItem.umur
-        holder.tvTelp.text = currentItem.noTelp
         holder.tvMulai.text = currentItem.tglMulai
         holder.tvAkhir.text = currentItem.tglAkhir
     }
@@ -29,10 +28,9 @@ class RVPelangganAdapter(private val data: Array<Pelanggan>) : RecyclerView.Adap
     }
 
     class viewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-        val tvNama : TextView = itemView.findViewById(R.id.namaPelanggan)
-        val tvUmur : TextView = itemView.findViewById(R.id.umurPelanggan)
-        val tvTelp : TextView = itemView.findViewById(R.id.noTelpPelanggan)
-        val tvMulai : TextView = itemView.findViewById(R.id.tglMulai)
-        val tvAkhir : TextView = itemView.findViewById(R.id.tglAkhir)
+        val tvNama : TextView = itemView.findViewById(R.id.namaTrainer)
+        val tvUmur : TextView = itemView.findViewById(R.id.workoutPlan)
+        val tvMulai : TextView = itemView.findViewById(R.id.jamMulai)
+        val tvAkhir : TextView = itemView.findViewById(R.id.jamAkhir)
     }
 }
