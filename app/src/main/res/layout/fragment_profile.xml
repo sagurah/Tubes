@@ -1,17 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="#A7D2CB"
     tools:context=".ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ImageView
+        android:id="@+id/img_profile"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="184dp"
+        android:layout_height="157dp"
+        android:layout_marginTop="70dp"
+        android:src="@drawable/ic_baseline_supervised_user_circle_24"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Profile Fragment"
-        android:textSize="26dp"
-        android:layout_gravity="top" />
+        android:layout_gravity="center"
+        android:layout_marginBottom="80dp"
+        android:textStyle="bold"
+        android:text="Profile"
+        android:textSize="28dp" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="30dp"
+        android:text="Ini Email"
+        android:textSize="20dp" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvTanggalLahir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Ini Tanggal Lahir"
+        android:textSize="20dp" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvNomorTelp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:text="Ini Nomor Telepon"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/btnEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="75dp"
+        android:text="Edit Profile" />
 
 </FrameLayout>
