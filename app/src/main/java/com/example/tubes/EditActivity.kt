@@ -40,7 +40,7 @@ class EditActivity : AppCompatActivity() {
 
             CoroutineScope(Dispatchers.IO).launch {
                 val user = User(0, username, password, tglLahir, email, noTelp)
-                userDAO.addUser(user)
+                userDAO.updateUser(user)
 
                 replaceFragment(ProfileFragment())
             }
