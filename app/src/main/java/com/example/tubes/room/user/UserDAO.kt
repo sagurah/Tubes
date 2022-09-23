@@ -1,6 +1,7 @@
 package com.example.tubes.room.user
 
 import androidx.room.*
+import androidx.room.Insert
 
 @Dao
 interface UserDAO {

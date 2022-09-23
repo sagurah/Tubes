@@ -12,6 +12,9 @@ import com.google.android.material.textfield.TextInputLayout
 import com.example.tubes.room.user.User
 import com.example.tubes.room.UserDB
 import com.example.tubes.room.user.UserDAO
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -67,6 +70,13 @@ class MainActivity : AppCompatActivity() {
                     && pass == bundle.getString("password")
                 ) checkLogin = true
             }
+
+            // Soal Nomor 3
+
+//            CoroutineScope(Dispatchers.IO).launch {
+//                val user = db.UserDAO().getUsers()
+//
+//            }
 
             if(!checkLogin){
                 Snackbar.make(mainLayout, "Username atau Password anda tidak sesuai", Snackbar.LENGTH_LONG).show()

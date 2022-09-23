@@ -8,10 +8,18 @@ import android.widget.Button
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.tubes.databinding.ActivityMainMenuBinding
 import com.example.tubes.databinding.ActivityRegisterBinding
+import com.example.tubes.room.UserDB
+import com.example.tubes.room.user.User
+import com.example.tubes.room.user.UserDAO
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class RegisterActivity : AppCompatActivity() {
 
+    val db by lazy { UserDB(this) }
     var binding : ActivityRegisterBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,6 +70,17 @@ class RegisterActivity : AppCompatActivity() {
                 && !email.isEmpty()
                 && !noTelp.isEmpty()
             ) checkRegistration = true
+
+            // Store registration data after validation
+            if(checkRegistration == true){
+                val user = User(0, uname, pass, tgl, email, noTelp)
+                UserDAO.deleteUser(user)
+                // Masukin pengecekkan register semua
+                // di dalam CoroutineScope(Dispatchers.IO).launch{}
+                bundle.putString("username", uname)
+                bundle.putString("password", pass)
+
+            }
 
             if(!checkRegistration)
                 return@OnClickListener
