@@ -1,6 +1,7 @@
 package com.example.tubes
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -23,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mainLayout : ConstraintLayout
     val db by lazy { UserDB(this) }
     private val userDAO = db.UserDAO()
+    var sharedPreferences: SharedPreferences? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +52,7 @@ class MainActivity : AppCompatActivity() {
 
         val btnLogin : Button = findViewById(R.id.btnLogin)
         btnLogin.setOnClickListener(View.OnClickListener{
-            var checkLogin : Boolean
+            var checkLogin : Boolean = false
             username = findViewById(R.id.textUsername)
             password = findViewById(R.id.textPassword)
             val bundle = intent.extras
@@ -58,27 +60,31 @@ class MainActivity : AppCompatActivity() {
             var uname = username.text.toString()
             var pass = password.text.toString()
 
-            if(uname.isEmpty())
-                username.setError("Username must be filled with text")
+            // Soal nomor 4 (Plis bener)
+            CoroutineScope(Dispatchers.IO).launch {
+                if(uname.isEmpty())
+                    username.setError("Username must be filled with text")
                 checkLogin = false
 
-            if(pass.isEmpty())
-                password.setError("Password must be filled with text")
+                if(pass.isEmpty())
+                    password.setError("Password must be filled with text")
                 checkLogin = false
 
-            if (bundle != null) {
-                if(
-                    uname == bundle.getString("username")
-                    && pass == bundle.getString("password")
-                ) checkLogin = true
+                if (bundle != null) {
+                    if(
+                        uname == bundle.getString("username")
+                        && pass == bundle.getString("password")
+                    ) checkLogin = true
+                }
+
+                val user = userDAO.getUserByCreds(uname, pass)
+
+                if(user != null){
+                    val editor: SharedPreferences.Editor = sharedPreferences!!.edit()
+                    editor.putString("id", user.id.toString()).apply()
+                    checkLogin = true
+                }
             }
-
-            // Soal Nomor 3
-
-//            CoroutineScope(Dispatchers.IO).launch {
-//                val user = userDAO().getUsers()
-//
-//            }
 
             if(!checkLogin){
                 Snackbar.make(mainLayout, "Username atau Password anda tidak sesuai", Snackbar.LENGTH_LONG).show()
