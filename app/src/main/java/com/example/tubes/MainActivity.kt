@@ -21,6 +21,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var username : TextInputEditText
     private lateinit var password : TextInputEditText
     private lateinit var mainLayout : ConstraintLayout
+    val db by lazy { UserDB(this) }
+    private val userDAO = db.UserDAO()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,7 +76,7 @@ class MainActivity : AppCompatActivity() {
             // Soal Nomor 3
 
 //            CoroutineScope(Dispatchers.IO).launch {
-//                val user = db.UserDAO().getUsers()
+//                val user = userDAO().getUsers()
 //
 //            }
 

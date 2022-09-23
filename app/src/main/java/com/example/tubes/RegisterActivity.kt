@@ -10,8 +10,6 @@ import com.example.tubes.databinding.ActivityMainMenuBinding
 import com.example.tubes.databinding.ActivityRegisterBinding
 import com.example.tubes.room.UserDB
 import com.example.tubes.room.user.User
-import com.example.tubes.room.user.UserDAO
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -19,11 +17,13 @@ import kotlinx.coroutines.launch
 
 class RegisterActivity : AppCompatActivity() {
 
-    val db by lazy { UserDB(this) }
     var binding : ActivityRegisterBinding? = null
+    val db by lazy { UserDB(this) }
+    private val userDAO = db.UserDAO()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val moveLogin = Intent(this, MainActivity::class.java)
 //        setContentView(R.layout.activity_register)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding?.root)
@@ -75,11 +75,14 @@ class RegisterActivity : AppCompatActivity() {
                 // Store registration data after validation
                 if(checkRegistration == true){
                     val user = User(0, uname, pass, tgl, email, noTelp)
-                    UserDAO.addUser(user)
-                    // Masukin pengecekkan register semua
-                    // di dalam CoroutineScope(Dispatchers.IO).launch{}
+                    userDAO.addUser(user)
+
                     bundle.putString("username", uname)
                     bundle.putString("password", pass)
+
+                    moveLogin.putExtras(bundle)
+
+                    startActivity(moveLogin)
 
                 }
             }
@@ -87,12 +90,6 @@ class RegisterActivity : AppCompatActivity() {
             if(!checkRegistration)
                 return@OnClickListener
 
-            bundle.putString("username", uname)
-            bundle.putString("password", pass)
-            val moveLogin = Intent(this, MainActivity::class.java)
-            moveLogin.putExtras(bundle)
-
-            startActivity(moveLogin)
         })
     }
 }
