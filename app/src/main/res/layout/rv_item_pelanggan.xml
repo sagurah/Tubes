@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/namaPelanggan"
+        android:id="@+id/namaTrainer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -15,72 +15,73 @@
         android:layout_marginEnd="16dp"
         android:ellipsize="end"
         android:maxLines="2"
-        android:text="Nama Pelanggan"
+        android:text="Nama Trainer"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/umurPelanggan"
+        android:id="@+id/workoutPlan"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:text="Umur Pelanggan"
+        android:text="Workout Plan"
         android:textColor="@color/black"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/namaPelanggan" />
+        app:layout_constraintTop_toBottomOf="@+id/namaTrainer" />
 
     <TextView
-        android:id="@+id/noTelpPelanggan"
+        android:id="@+id/tanggal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:text="Nomor Telpon Pelanggan"
+        android:text="Tanggal"
         android:textColor="@color/black"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/umurPelanggan" />
+        app:layout_constraintTop_toBottomOf="@+id/workoutPlan" />
 
     <TextView
-        android:id="@+id/tglMulai"
+        android:id="@+id/jamMulai"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:text="Tanggal Mulai Membership"
+        android:text="Jam Mulai"
         android:textColor="@color/black"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/noTelpPelanggan" />
+        app:layout_constraintTop_toBottomOf="@+id/tanggal" />
 
     <TextView
-        android:id="@+id/tglAkhir"
+        android:id="@+id/jamAkhir"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:text="Tanggal Akhir Membership"
+        android:text="Jam Akhir"
         android:textColor="@color/black"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tglMulai" />
+        app:layout_constraintTop_toBottomOf="@+id/jamMulai" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
