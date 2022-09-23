@@ -1,5 +1,6 @@
 package com.example.tubes
 
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
@@ -23,7 +24,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var password : TextInputEditText
     private lateinit var mainLayout : ConstraintLayout
     val db by lazy { UserDB(this) }
-    private val userDAO = db.UserDAO()
     var sharedPreferences: SharedPreferences? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,6 +51,8 @@ class MainActivity : AppCompatActivity() {
         })
 
         val btnLogin : Button = findViewById(R.id.btnLogin)
+        val userDAO = db.UserDAO()
+
         btnLogin.setOnClickListener(View.OnClickListener{
             var checkLogin : Boolean = false
             username = findViewById(R.id.textUsername)
@@ -80,8 +82,10 @@ class MainActivity : AppCompatActivity() {
                 val user = userDAO.getUserByCreds(uname, pass)
 
                 if(user != null){
+                    sharedPreferences = getSharedPreferences("myPref", Context.MODE_PRIVATE)
                     val editor: SharedPreferences.Editor = sharedPreferences!!.edit()
-                    editor.putString("id", user.id.toString()).apply()
+                    editor.putString("id", user.id.toString())
+                    editor.commit()
                     checkLogin = true
                 }
             }

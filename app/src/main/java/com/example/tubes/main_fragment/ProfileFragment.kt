@@ -16,8 +16,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class ProfileFragment : Fragment() {
-    val db by lazy { activity?.let { UserDB(it) }}
-    private val id = "idKey"
+    val db by lazy { UserDB(requireContext())}
+    private val id = "id"
     private val preference = "myPref"
     var sharedPreferences: SharedPreferences? = null
     private var bind: FragmentProfileBinding? = null
@@ -38,7 +38,7 @@ class ProfileFragment : Fragment() {
         sharedPreferences = activity?.getSharedPreferences(preference, Context.MODE_PRIVATE)
 
         CoroutineScope(Dispatchers.IO).launch {
-            val user = db?.UserDAO()?.getUser(sharedPreferences!!.getString(id, "")!!.toInt())?.get(0)
+            val user = db.UserDAO().getUser(sharedPreferences!!.getString(id, "")!!.toInt())?.get(0)
             binding.tvUsername.setText(user?.username)
             binding.tvEmail.setText(user?.email)
             binding.tvNomorTelp.setText(user?.nomorTelp)
