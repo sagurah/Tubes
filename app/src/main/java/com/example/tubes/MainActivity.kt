@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mainLayout : ConstraintLayout
     val db by lazy { UserDB(this) }
     var sharedPreferences: SharedPreferences? = null
+    var checkLogin : Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         val userDAO = db.UserDAO()
 
         btnLogin.setOnClickListener(View.OnClickListener{
-            var checkLogin : Boolean = false
+
             username = findViewById(R.id.textUsername)
             password = findViewById(R.id.textPassword)
             val bundle = intent.extras
@@ -85,7 +86,7 @@ class MainActivity : AppCompatActivity() {
                     sharedPreferences = getSharedPreferences("myPref", Context.MODE_PRIVATE)
                     val editor: SharedPreferences.Editor = sharedPreferences!!.edit()
                     editor.putString("id", user.id.toString())
-                    editor.commit()
+                    editor.apply()
                     checkLogin = true
                 }
             }
