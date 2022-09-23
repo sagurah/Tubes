@@ -26,9 +26,9 @@ class FTOActivity : AppCompatActivity() {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()
-            },4000)
+            },2000)
         }else{
-        val intent = Intent(this,MainActivity::class.java)
+        val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
         }
