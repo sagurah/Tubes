@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-android-extensions'
+    id 'com.google.gms.google-services'
 }
 apply plugin: 'kotlin-kapt'
 
@@ -41,6 +42,7 @@ android {
 dependencies {
 
     implementation 'androidx.room:room-common:2.4.3'
+    implementation 'com.google.firebase:firebase-messaging:23.0.8'
     def room_version = "2.4.3"
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
