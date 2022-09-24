@@ -46,6 +46,7 @@ dependencies {
 
     implementation 'androidx.room:room-common:2.4.3'
     implementation 'com.google.firebase:firebase-messaging:23.0.8'
+    implementation 'com.google.firebase:firebase-messaging-ktx:23.0.8'
     def room_version = "2.4.3"
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
