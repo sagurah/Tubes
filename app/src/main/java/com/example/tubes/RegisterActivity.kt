@@ -84,6 +84,7 @@ class RegisterActivity : AppCompatActivity() {
 
                     startActivity(moveLogin)
                 }
+
             }
 
             if(!checkRegistration)
