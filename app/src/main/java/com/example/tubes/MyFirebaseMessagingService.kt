@@ -11,7 +11,7 @@ import androidx.core.app.NotificationManagerCompat
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 
-class GymmersFirebaseMessagingService : FirebaseMessagingService() {
+class MyFirebaseMessagingService : FirebaseMessagingService() {
     override fun onMessageReceived(remoteMessage: RemoteMessage){
         if (remoteMessage.notification != null){
             sendNotification(remoteMessage.notification!!.title.toString(), remoteMessage.notification!!.body.toString())
@@ -19,7 +19,7 @@ class GymmersFirebaseMessagingService : FirebaseMessagingService() {
     }
 
     private fun sendNotification(messageTitle: String, messageBody: String){
-        val intent = Intent(this, GymmersFirebaseMessagingService::class.java).apply {
+        val intent = Intent(this, MyFirebaseMessagingService::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         }
         val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT)
