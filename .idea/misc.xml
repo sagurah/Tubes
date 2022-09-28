@@ -33,6 +33,10 @@
         <entry key="..\:/Users/IDEAPAD 3/Documents/GitHub/Tubes/app/src/main/res/layout/fragment_settings.xml" value="0.1" />
         <entry key="..\:/Users/IDEAPAD 3/Documents/GitHub/Tubes/app/src/main/res/menu/bottom_nav.xml" value="0.264" />
         <entry key="..\:/Users/IDEAPAD 3/Documents/GitHub/Tubes/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
+        <entry key="..\:/Users/M S I/Documents/GitHub/Tubes/app/src/main/res/drawable/ic_baseline_circle_icon_notifications_24.xml" value="0.1" />
+        <entry key="..\:/Users/M S I/Documents/GitHub/Tubes/app/src/main/res/drawable/ic_baseline_circle_notifications_24.xml" value="0.1" />
+        <entry key="..\:/Users/M S I/Documents/GitHub/Tubes/app/src/main/res/drawable/ic_baseline_notifications_24.xml" value="0.1" />
+        <entry key="..\:/Users/M S I/Documents/GitHub/Tubes/app/src/main/res/drawable/ic_baseline_supervised_user_circle_24.xml" value="0.1" />
         <entry key="..\:/Users/M S I/Documents/GitHub/Tubes/app/src/main/res/layout/activity_edit.xml" value="0.264" />
         <entry key="..\:/Users/M S I/Documents/GitHub/Tubes/app/src/main/res/layout/activity_edit_plan.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/M S I/Documents/GitHub/Tubes/app/src/main/res/layout/activity_main.xml" value="0.2" />
@@ -41,7 +45,7 @@
         <entry key="..\:/Users/M S I/Documents/GitHub/Tubes/app/src/main/res/layout/fragment_plans.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/M S I/Documents/GitHub/Tubes/app/src/main/res/layout/fragment_profile.xml" value="0.2" />
         <entry key="..\:/Users/M S I/Documents/GitHub/Tubes/app/src/main/res/layout/fragment_settings.xml" value="0.23229166666666667" />
-        <entry key="..\:/Users/M S I/Documents/GitHub/Tubes/app/src/main/res/layout/rv_item_pelanggan.xml" value="0.4" />
+        <entry key="..\:/Users/M S I/Documents/GitHub/Tubes/app/src/main/res/layout/rv_item_pelanggan.xml" value="0.264" />
       </map>
     </option>
   </component>
