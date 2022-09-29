@@ -95,7 +95,6 @@ class RegisterActivity : AppCompatActivity() {
 
                     bundle.putString("username", uname)
                     bundle.putString("password", pass)
-
                     moveLogin.putExtras(bundle)
 
                     val bitmap: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.logo)
@@ -104,7 +103,6 @@ class RegisterActivity : AppCompatActivity() {
                         binding?.registerLayoutUsername?.getEditText()?.getText().toString(),
                         Bitmap.createScaledBitmap(bitmap, 300, 100, false)
                     )
-
                     startActivity(moveLogin)
                 }
             }
