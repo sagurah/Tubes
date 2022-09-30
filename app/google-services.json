@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "906393893501",
-    "project_id": "tubes-7b9b8",
-    "storage_bucket": "tubes-7b9b8.appspot.com"
+    "project_number": "936013636466",
+    "project_id": "tubes-ff136",
+    "storage_bucket": "tubes-ff136.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:906393893501:android:66482ca8d1e1778f700f14",
+        "mobilesdk_app_id": "1:936013636466:android:2a58a034cc2989aa41f3eb",
         "android_client_info": {
           "package_name": "com.example.tubes"
         }
       },
       "oauth_client": [
         {
-          "client_id": "906393893501-2s0cn622go78br2mc08molrcbd5lut44.apps.googleusercontent.com",
+          "client_id": "936013636466-fhh9oacb2p9tvpmgbnn977ae320d7rte.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAe1A0NHVBycdFEtFN5OV7q1hqNLui3M9E"
+          "current_key": "AIzaSyBvqEM-QD8z37ds_tY6EeNOxZEbhDejzuM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "906393893501-2s0cn622go78br2mc08molrcbd5lut44.apps.googleusercontent.com",
+              "client_id": "936013636466-fhh9oacb2p9tvpmgbnn977ae320d7rte.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
