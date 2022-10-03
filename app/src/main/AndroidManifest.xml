@@ -14,7 +14,10 @@
         android:theme="@style/Theme.Tubes"
         tools:targetApi="31">
         <activity
-            android:name=".EditPlanActivity"
+            android:name=".AddPlansActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditPlansActivity"
             android:exported="false" />
         <activity
             android:name=".EditActivity"
@@ -37,14 +40,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <service
             android:name=".MyFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <receiver android:name=".NotificationReceiver"/>
+
+        <receiver android:name=".NotificationReceiver" />
     </application>
 
 </manifest>

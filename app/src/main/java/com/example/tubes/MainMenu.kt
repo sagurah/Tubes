@@ -1,6 +1,5 @@
 package com.example.tubes
 
-import android.app.Dialog
 import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -10,12 +9,11 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import com.example.tubes.databinding.ActivityMainBinding
 import com.example.tubes.databinding.ActivityMainMenuBinding
 import com.example.tubes.main_fragment.HomeFragment
+import com.example.tubes.main_fragment.PlansFragment
 import com.example.tubes.main_fragment.ProfileFragment
 import com.example.tubes.main_fragment.SettingsFragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainMenu : AppCompatActivity() {
 

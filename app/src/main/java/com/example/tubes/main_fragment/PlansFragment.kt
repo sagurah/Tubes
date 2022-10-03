@@ -1,4 +1,4 @@
-package com.example.tubes
+package com.example.tubes.main_fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,10 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tubes.entity.Pelanggan
+import com.example.tubes.R
+import com.example.tubes.RVPlanAdapter
 import com.example.tubes.room.JadwalDB
-import com.example.tubes.room.jadwal.Jadwal
-import com.example.tubes.room.jadwal.JadwalDAO
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

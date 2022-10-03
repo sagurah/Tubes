@@ -12,7 +12,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.w3c.dom.Text
 
-class EditPlanActivity : AppCompatActivity() {
+class EditPlansActivity : AppCompatActivity() {
 
     private lateinit var btnSubmit: Button
     private lateinit var tilNamaTrainer: TextInputLayout
