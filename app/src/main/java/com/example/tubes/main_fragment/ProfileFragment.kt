@@ -44,11 +44,11 @@ class ProfileFragment : Fragment() {
             binding.tvNomorTelp.setText(user?.nomorTelp)
             binding.tvTanggalLahir.setText(user?.tglLahir)
 
-//            binding.btnEdit.setOnClickListener{
-//                val move = Intent(activity, EditActivity::class.java)
-//                startActivity(move)
-//                activity?.finish()
-//            }
+            binding.btnEdit.setOnClickListener{
+                val move = Intent(activity, EditActivity::class.java)
+                startActivity(move)
+                activity?.finish()
+            }
         }
 
     }
