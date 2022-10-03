@@ -5,20 +5,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tubes.entity.Pelanggan
-import org.w3c.dom.Text
+import com.example.tubes.room.jadwal.Jadwal
 
-class RVPelangganAdapter(private val data: Array<Pelanggan>) : RecyclerView.Adapter<RVPelangganAdapter.viewHolder>() {
+class RVPlanAdapter(private val data: Array<Jadwal>) : RecyclerView.Adapter<RVPlanAdapter.viewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.rv_item_pelanggan, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.rv_item_plan, parent, false)
         return viewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: viewHolder, position: Int) {
         val currentItem = data[position]
-        holder.tvNama.text = currentItem.nama
-        holder.tvWorkout.text = currentItem.workout
+        holder.tvNama.text = currentItem.namaTrainer
+        holder.tvWorkout.text = currentItem.plan
         holder.tvMulai.text = currentItem.jamMulai
         holder.tvAkhir.text = currentItem.jamAkhir
     }
@@ -33,4 +32,5 @@ class RVPelangganAdapter(private val data: Array<Pelanggan>) : RecyclerView.Adap
         val tvMulai : TextView = itemView.findViewById(R.id.jamMulai)
         val tvAkhir : TextView = itemView.findViewById(R.id.jamAkhir)
     }
+
 }

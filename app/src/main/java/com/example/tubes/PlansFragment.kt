@@ -8,6 +8,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tubes.entity.Pelanggan
+import com.example.tubes.room.JadwalDB
+import com.example.tubes.room.jadwal.Jadwal
+import com.example.tubes.room.jadwal.JadwalDAO
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class PlansFragment : Fragment() {
 
@@ -18,16 +24,26 @@ class PlansFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_plans, container, false)
     }
 
+    fun refresh(){
+        val refresh = parentFragmentManager.beginTransaction()
+        refresh.detach(this).attach(this).commit()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onViewCreated(view, savedInstanceState)
         val layoutManager = LinearLayoutManager(context)
-        val adapter : RVPelangganAdapter = RVPelangganAdapter(Pelanggan.listofPelanggan)
+        val db by lazy { JadwalDB(requireContext()) }
 
-        val rvPelanggan : RecyclerView = view.findViewById(R.id.rv_pelanggan)
+        CoroutineScope(Dispatchers.IO).launch {
+            val jadwal = db.JadwalDAO().getJadwal()
+            val adapter: RVPlanAdapter = RVPlanAdapter(jadwal.toTypedArray())
+            val rvJadwal: RecyclerView = view.findViewById(R.id.rv_plan)
+            rvJadwal.layoutManager = layoutManager
+            rvJadwal.setHasFixedSize(true)
+            rvJadwal.adapter = adapter
+            refresh()
+        }
 
-        rvPelanggan.layoutManager = layoutManager
-        rvPelanggan.setHasFixedSize(true)
-        rvPelanggan.adapter = adapter
     }
 
 }
