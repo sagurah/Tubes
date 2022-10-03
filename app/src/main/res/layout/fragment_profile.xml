@@ -1,72 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#A7D2CB"
+    android:background="@color/white"
     tools:context=".ProfileFragment">
 
     <ImageView
-        android:id="@+id/img_profile"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="184dp"
-        android:layout_height="157dp"
-        android:layout_marginTop="50dp"
-        android:src="@drawable/ic_baseline_supervised_user_circle_24"/>
+        android:id="@+id/background"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="432dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="-1dp"
+        android:background="@drawable/ic_wave2"
+        android:rotationY="-180" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/textProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="80dp"
-        android:textStyle="bold"
-        android:text="Profile"
-        android:textSize="28dp" />
+    <ImageView
+        android:id="@+id/background2"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="-1dp"
+        android:layout_marginBottom="429dp"
+        android:background="@drawable/ic_wave3"
+        android:rotation="-180" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="45dp"
-        android:text="Ini Email"
-        android:textSize="20dp" />
+    <ImageView
+        android:id="@+id/user_logo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignTop="@+id/background2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/ic_user_logo_24" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="18dp"
-        android:text="Ini Username"
-        android:textSize="20dp" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="185dp"
+        android:layout_marginBottom="80dp"
+        android:text="Username"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_logo"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="175dp"
+        android:layout_marginTop="70dp"
+        android:text="Email"
+        android:textSize="25dp" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvTanggalLahir"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:text="Ini Tanggal Lahir"
-        android:textSize="20dp" />
+        android:layout_below="@+id/tvEmail"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="135dp"
+        android:layout_marginTop="20dp"
+        android:text="Tanggal Lahir"
+        android:textSize="25dp" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvNomorTelp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="40dp"
-        android:text="Ini Nomor Telepon"
-        android:textSize="20dp" />
+        android:layout_below="@+id/tvTanggalLahir"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="20dp"
+        android:text="Nomor Telepon"
+        android:textSize="25dp" />
 
-    <Button
-        android:id="@+id/btnEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="85dp"
-        android:text="Edit Profile" />
-
-</FrameLayout>
+</RelativeLayout>
