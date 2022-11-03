@@ -32,6 +32,10 @@ class MainMenu : AppCompatActivity() {
                 R.id.profile -> replaceFragment(ProfileFragment())
                 R.id.settings -> replaceFragment(SettingsFragment())
                 R.id.plans -> replaceFragment(PlansFragment())
+                R.id.maps -> {
+                    val mainIntent = Intent(this, MapActivity::class.java)
+                    this.startActivity(mainIntent)
+                }
             }
             true
         }

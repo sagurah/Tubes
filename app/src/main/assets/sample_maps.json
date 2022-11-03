@@ -1,0 +1,35 @@
+{
+  "results" : [
+    {
+      "geometry": {
+        "location": {
+          "lat": -7.7796701256512275,
+          "lng" :  110.41521054975503
+        }
+      },
+      "name" : "Atma Gymmers 1",
+      "vicinity" : "Jl. Babarsari, Janti, Caturtunggal, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281"
+    },
+    {
+      "geometry": {
+        "location": {
+          "lat": -7.781149774667425,
+          "lng" : 110.41445994170296
+        }
+      },
+      "name" : "Atma Gymmers 2",
+      "vicinity" : "Jl. Babarsari No.15.A, Janti, Caturtunggal, Sleman, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281"
+    },
+    {
+      "geometry": {
+        "location": {
+          "lat": -7.7810816101755345,
+          "lng" : 110.41309968914113
+        }
+      },
+      "name" : "Atma Gymmers 3",
+      "vicinity" : "Jl. Dirgantara IV No.8, Janti, Caturtunggal, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281"
+    }
+  ],
+  "status": "OK"
+}
