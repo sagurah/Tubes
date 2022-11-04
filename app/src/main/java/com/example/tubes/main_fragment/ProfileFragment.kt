@@ -51,5 +51,11 @@ class ProfileFragment : Fragment() {
             }
         }
 
+        binding.userLogo.setOnClickListener(){
+            val move = Intent(activity, CameraActivity::class.java)
+            startActivity(move)
+            activity?.finish()
+        }
+
     }
 }
