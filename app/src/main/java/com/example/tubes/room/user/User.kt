@@ -11,5 +11,4 @@ data class User(
     val tglLahir  : String,
     val email     : String,
     val nomorTelp : String,
-
 )

@@ -60,7 +60,7 @@ class EditActivity : AppCompatActivity() {
 
             CoroutineScope(Dispatchers.IO).launch {
                 val user = User(0, username, password, tglLahir, email, noTelp)
-                userDAO.updateUser(user)
+//                userDAO.updateUser(user)
 
                 createNotificationChannel()
                 sendNotification(username)
