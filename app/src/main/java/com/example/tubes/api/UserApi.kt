@@ -5,8 +5,9 @@ class UserApi {
         val BASE_URL = "https://tubespbp-api.herokuapp.com/"
         val GET_ALL_URL = BASE_URL + "user/"
         val GET_BY_ID_URL = BASE_URL + "user/"
-        val ADD_URL = BASE_URL + "user/"
+        val ADD_URL = BASE_URL + "user"
         val UPDATE_URL = BASE_URL + "user/"
         val DELETE_URL = BASE_URL + "user/"
+        val login = BASE_URL + "login"
     }
 }
