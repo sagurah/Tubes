@@ -12,10 +12,12 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.Fragment
+import com.android.volley.RequestQueue
 import com.example.tubes.room.UserDB
 import com.example.tubes.*
 import com.example.tubes.databinding.ActivityEditBinding
@@ -38,8 +40,12 @@ class EditActivity : AppCompatActivity() {
 //    private var bind: ActivityEditBinding? = null
 //    private val binding get() = bind!!
 
-    val db by lazy { UserDB(this) }
-    private val userDAO = db.UserDAO()
+    private var queue: RequestQueue? = null
+    private var username: EditText? = null
+    private var password: EditText? = null
+    private var email: EditText? = null
+    private var tglLahir: EditText? = null
+    private var noTelp: EditText? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
