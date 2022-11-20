@@ -6,29 +6,31 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.Fragment
+import com.android.volley.AuthFailureError
 import com.android.volley.RequestQueue
-import com.example.tubes.room.UserDB
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.example.tubes.*
-import com.example.tubes.databinding.ActivityEditBinding
-import com.example.tubes.databinding.FragmentProfileBinding
-import com.example.tubes.main_fragment.ProfileFragment
-import com.example.tubes.room.user.User
+import com.example.tubes.api.UserApi
+import com.example.tubes.models.User
+//import com.example.tubes.room.user.User
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_edit.*
 import kotlinx.android.synthetic.main.activity_register.view.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import org.json.JSONObject
+import java.nio.charset.StandardCharsets
 
 class EditActivity : AppCompatActivity() {
     private val id = "id"
@@ -51,25 +53,140 @@ class EditActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit)
 
-        btnEditProfile.setOnClickListener(){
-            val username: String = findViewById<View?>(R.id.tilUsername).toString()
-            val password: String = findViewById<View?>(R.id.tilPassword).toString()
-            val email: String = findViewById<View?>(R.id.tilEmail).toString()
-            val tglLahir: String = findViewById<View?>(R.id.tilTglLahir).toString()
-            val noTelp: String = findViewById<View?>(R.id.tilNoTelp).toString()
+        queue = Volley.newRequestQueue(this)
+        username = findViewById(R.id.tilUsername)
+        password = findViewById(R.id.tilPassword)
+        email = findViewById(R.id.tilEmail)
+        tglLahir = findViewById(R.id.tilTglLahir)
+        noTelp = findViewById(R.id.tilNoTelp)
 
-            CoroutineScope(Dispatchers.IO).launch {
-                val user = User(0, username, password, tglLahir, email, noTelp)
-//                userDAO.updateUser(user)
-
-                createNotificationChannel()
-                sendNotification(username)
-
-                replaceFragment(ProfileFragment())
-            }
+        val btnSave = findViewById<Button>(R.id.btnEditProfile)
+        val id = intent.getLongExtra("id", -1)
+        if (id != -1L) {
+            getUserById(id)
+            btnSave.setOnClickListener { updateUser(id) }
         }
 
+//        btnEditProfile.setOnClickListener(){
+//            val username: String = findViewById<View?>(R.id.tilUsername).toString()
+//            val password: String = findViewById<View?>(R.id.tilPassword).toString()
+//            val email: String = findViewById<View?>(R.id.tilEmail).toString()
+//            val tglLahir: String = findViewById<View?>(R.id.tilTglLahir).toString()
+//            val noTelp: String = findViewById<View?>(R.id.tilNoTelp).toString()
+//
+//            CoroutineScope(Dispatchers.IO).launch {
+//                val user = User(0, username, password, tglLahir, email, noTelp)
+//                userDAO.updateUser(user)
+//
+//                createNotificationChannel()
+//                sendNotification(username)
+//
+//                replaceFragment(ProfileFragment())
+//            }
+//        }
+
     }
+
+    private fun getUserById(id: Long) {
+        val stringRequest: StringRequest = object :
+            StringRequest(
+                Method.GET,
+                UserApi.GET_BY_ID_URL + id,
+                Response.Listener { response ->
+                    val gson = Gson()
+                    val user = gson.fromJson(response, User::class.java)
+
+                    username!!.setText(user.username)
+                    password!!.setText(user.password)
+                    email!!.setText(user.email)
+                    tglLahir!!.setText(user.tgl_lahir)
+                    noTelp!!.setText(user.no_telp)
+
+                    Toast.makeText(
+                        this@EditActivity,
+                        "Data berhasil diambil!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                },
+                Response.ErrorListener { error ->
+                    try {
+                        val responseBody =
+                            String(error.networkResponse.data, StandardCharsets.UTF_8)
+                        val errors = JSONObject(responseBody)
+                        Toast.makeText(
+                            this@EditActivity,
+                            errors.getString("message"),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    } catch (e: Exception) {
+                        Toast.makeText(this@EditActivity, e.message, Toast.LENGTH_SHORT).show()
+                    }
+                }) {
+            @Throws(AuthFailureError::class)
+            override fun getHeaders(): Map<String, String> {
+                val headers = HashMap<String, String>()
+                headers["Accept"] = "application/json"
+                return headers
+            }
+        }
+        queue!!.add(stringRequest)
+    }
+
+    private fun updateUser(id: Long){
+        val user = User(
+            username!!.text.toString(),
+            password!!.text.toString(),
+            email!!.text.toString(),
+            tglLahir!!.text.toString(),
+            noTelp!!.text.toString()
+        )
+
+        val stringRequest: StringRequest =
+            object: StringRequest(Method.PUT, UserApi.UPDATE_URL + id, Response.Listener { response ->
+                val gson = Gson()
+                var user = gson.fromJson(response, User::class.java)
+
+                if(user != null)
+                    Toast.makeText(this@EditActivity, "Data berhasil diubah", Toast.LENGTH_SHORT).show()
+
+                val returnIntent = Intent()
+                setResult(RESULT_OK, returnIntent)
+                finish()
+
+            }, Response.ErrorListener { error ->
+                try{
+                    val responseBody = String(error.networkResponse.data, StandardCharsets.UTF_8)
+                    val errors = JSONObject(responseBody)
+                    Toast.makeText(
+                        this,
+                        errors.getString("message"),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } catch (e: Exception){
+                    Toast.makeText(this@EditActivity, e.message, Toast.LENGTH_SHORT).show()
+                }
+            }){
+                @Throws(AuthFailureError::class)
+                override fun getHeaders(): Map<String, String> {
+                    val headers = HashMap<String, String>()
+                    headers["Accept"] = "application/json"
+                    return headers
+                }
+
+                @Throws(AuthFailureError::class)
+                override fun getBody(): ByteArray {
+                    val gson = Gson()
+                    val requestBody = gson.toJson(user)
+                    return requestBody.toByteArray(StandardCharsets.UTF_8)
+                }
+
+                override fun getBodyContentType(): String {
+                    return "application/json"
+                }
+            }
+        queue!!.add(stringRequest)
+    }
+
     fun replaceFragment(fragment : Fragment){
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
