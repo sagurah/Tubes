@@ -108,6 +108,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
+
             if(!checkLogin){
                 Snackbar.make(mainLayout, "Username atau Password anda tidak sesuai", Snackbar.LENGTH_LONG).show()
                 return@OnClickListener
