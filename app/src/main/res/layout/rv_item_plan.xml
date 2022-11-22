@@ -85,6 +85,7 @@
         android:layout_marginTop="24dp"
         android:text="Edit"
         android:textSize="10sp"
+        android:backgroundTint="#FFC000"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/jamMulai" />
@@ -96,6 +97,19 @@
         android:layout_marginStart="92dp"
         android:layout_marginTop="24dp"
         android:text="Delete"
+        android:textSize="10sp"
+        android:backgroundTint="#FF0000"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/jamMulai" />
+
+    <Button
+        android:id="@+id/btnCetak"
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:layout_marginStart="175dp"
+        android:layout_marginTop="24dp"
+        android:text="Print"
         android:textSize="10sp"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
