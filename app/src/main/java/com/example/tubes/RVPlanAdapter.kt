@@ -5,12 +5,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Filter
 import android.widget.Filterable
 import android.widget.TextView
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tubes.main_fragment.PlansFragment
 import com.example.tubes.room.jadwal.Jadwal
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -34,11 +38,26 @@ class RVPlanAdapter(
     }
 
     override fun onBindViewHolder(holder: viewHolder, position: Int) {
-        val currentItem = data[position]
+        val currentItem = filteredList[position]
         holder.tvNama.text = currentItem.namaTrainer
         holder.tvWorkout.text = currentItem.plan
         holder.tvMulai.text = currentItem.jamMulai
         holder.tvAkhir.text = currentItem.jamAkhir
+
+        holder.btnDelete.setOnClickListener{
+            val dialog = MaterialAlertDialogBuilder(context)
+            dialog.setTitle("Konfirmasi")
+                .setMessage("Apakah anda yakin untuk delete?")
+                .setNegativeButton("Batal", null)
+                .setPositiveButton("Hapus"){_,_ ->
+                    if(fragment is PlansFragment) currentItem.id?.let{ it1 ->
+                        fragment.deletePlan(
+                            it1
+                        )
+                    }
+                }
+                .show()
+        }
     }
 
     fun setData(data2: Array<Jadwal>) {
@@ -54,6 +73,8 @@ class RVPlanAdapter(
         val tvWorkout : TextView = itemView.findViewById(R.id.workoutPlan)
         val tvMulai : TextView = itemView.findViewById(R.id.jamMulai)
         val tvAkhir : TextView = itemView.findViewById(R.id.jamAkhir)
+        val btnDelete : Button = itemView.findViewById(R.id.btnDelete)
+        val btnEdit : Button = itemView.findViewById(R.id.btnEdit)
     }
     override fun getFilter(): Filter {
         return object : Filter (){
