@@ -21,8 +21,7 @@ import com.example.tubes.RVPlanAdapter
 import com.example.tubes.api.PlansApi
 import com.example.tubes.databinding.FragmentPlansBinding
 import com.example.tubes.entity.ResponseData
-import com.example.tubes.room.JadwalDB
-import com.example.tubes.room.jadwal.Jadwal
+import com.example.tubes.models.Plans
 import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -90,7 +89,7 @@ class PlansFragment : Fragment() {
             StringRequest(Method.GET, PlansApi.GET_ALL_URL, Response.Listener { response ->
                 val gson = Gson()
                 Log.d("logggggg", response.toString())
-                val pelanggan: Array<Jadwal> =
+                val pelanggan: Array<Plans> =
                     gson.fromJson(response, ResponseData::class.java).data.toTypedArray()
                 adapter!!.setData(pelanggan)
                 adapter!!.filter.filter(binding.svPelanggan!!.query)
@@ -132,7 +131,7 @@ class PlansFragment : Fragment() {
             StringRequest(Method.DELETE, PlansApi.DELETE_URL + id, Response.Listener { response ->
                 setLoading(false)
                 val gson = Gson()
-                val pelanggan  = gson.fromJson(response, Jadwal::class.java)
+                val pelanggan  = gson.fromJson(response, Plans::class.java)
 
                 if(pelanggan != null)
                     Toast.makeText(requireContext(), "Data berhasil diambil", Toast.LENGTH_SHORT).show()
