@@ -89,7 +89,7 @@ class PlansFragment : Fragment() {
         val stringRequest: StringRequest = object :
             StringRequest(Method.GET, PlansApi.GET_ALL_URL, Response.Listener { response ->
                 val gson = Gson()
-
+                Log.d("logggggg", response.toString())
                 val pelanggan: Array<Jadwal> =
                     gson.fromJson(response, ResponseData::class.java).data.toTypedArray()
                 adapter!!.setData(pelanggan)
