@@ -8,4 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="base_app_color">#008680</color>
+    <color name="pallete_1">#6B728E</color>
+    <color name="pallete_2">#50577A</color>
+    <color name="pallete_3">#474E68</color>
+    <color name="pallete_4">#404258</color>
 </resources>

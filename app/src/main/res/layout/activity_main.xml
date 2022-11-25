@@ -5,7 +5,7 @@
     android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#A7D2CB"
+    android:background="@color/pallete_1"
     tools:context=".MainActivity">
 
     <ImageView
@@ -33,13 +33,14 @@
             android:id="@+id/inputLayoutUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/white"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:hint="Username"
             app:errorEnabled="true"
             app:startIconDrawable="@drawable/ic_user_24"
             android:layout_marginBottom="8dp"
             app:helperText="Input your Username"
-            app:helperTextTextColor="@color/black">
+            app:helperTextTextColor="@color/white">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textUsername"
@@ -55,10 +56,11 @@
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:hint="Password"
+            app:boxBackgroundColor="@color/white"
             app:errorEnabled="true"
             app:startIconDrawable="@drawable/ic_lock_24"
             app:helperText="Input your Password"
-            app:helperTextTextColor="@color/black">
+            app:helperTextTextColor="@color/white">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textPassword"
@@ -97,7 +99,7 @@
             android:layout_marginStart="5dp"
             android:layout_weight="1"
             android:text="Login"
-            android:textColor="#000000"/>
+            android:textColor="@color/white"/>
 
     </LinearLayout>
 
@@ -117,7 +119,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="Don't have an account ? Click here to"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="12dp"
             android:textStyle="italic"
             app:layout_constraintEnd_toStartOf="@+id/btnRegis"
@@ -130,6 +132,7 @@
             android:layout_width="71dp"
             android:layout_height="wrap_content"
             android:text="Sign-up"
+            android:textColor="@color/white"
             android:textSize="12dp"
             android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="parent"

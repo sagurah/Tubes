@@ -5,7 +5,8 @@
     android:id="@+id/registerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
+    tools:context=".RegisterActivity"
+    android:background="@color/pallete_1">
 
     <TextView
         android:id="@+id/titleRegister"
@@ -14,6 +15,7 @@
         android:text="Registration"
         android:textSize="30dp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -40,7 +42,9 @@
             android:layout_height="wrap_content"
             android:hint="Username"
             app:errorEnabled="true"
+            app:boxBackgroundColor="@color/white"
             app:startIconDrawable="@drawable/ic_user_24"
+            app:helperTextTextColor="@color/white"
             app:helperText="Masukkan Username Anda"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
@@ -54,10 +58,12 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/registerLayoutPassword"
             android:layout_width="match_parent"
+            app:boxBackgroundColor="@color/white"
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:hint="Password"
             app:errorEnabled="true"
+            app:helperTextTextColor="@color/white"
             app:startIconDrawable="@drawable/ic_lock_24"
             app:helperText="Masukkan Password Anda">
 
@@ -72,8 +78,10 @@
             android:id="@+id/registerLayoutTanggalLahir"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/white"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:hint="dd/mm/xxxx"
+            app:helperTextTextColor="@color/white"
             app:errorEnabled="true"
             app:startIconDrawable="@drawable/ic_date_24"
             app:helperText="Masukkan Tanggal Lahir Anda">
@@ -89,10 +97,12 @@
             android:id="@+id/registerLayoutEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/white"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:hint="example@students.uajy.ac.id"
             app:errorEnabled="true"
             app:startIconDrawable="@drawable/ic_email_24"
+            app:helperTextTextColor="@color/white"
             app:helperText="Masukkan Email Anda">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -106,6 +116,8 @@
             android:id="@+id/registerLayoutNoTelp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/white"
+            app:helperTextTextColor="@color/white"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:hint="6289xxxxxxxxx"
             app:errorEnabled="true"
