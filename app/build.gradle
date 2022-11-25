@@ -83,7 +83,10 @@ dependencies {
     // Permission Helper
     implementation 'com.github.pankaj89:PermissionHelper:2.3'
 
-    // Fancy Toast
+    // Fancy Toast | UI Lib
     implementation 'io.github.shashank02051997:FancyToast:2.0.2'
+
+    // Ripple Background | UI Lib
+    implementation 'com.skyfishjy.ripplebackground:library:1.0.1'
 
 }

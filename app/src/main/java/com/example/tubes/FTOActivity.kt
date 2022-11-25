@@ -4,10 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-
+import com.skyfishjy.library.RippleBackground
 
 
 class FTOActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val settings = getSharedPreferences("prefs", 0)
@@ -28,7 +29,7 @@ class FTOActivity : AppCompatActivity() {
                 finish()
             },2000)
         }else{
-        val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
         }
