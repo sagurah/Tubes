@@ -16,12 +16,12 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.example.tubes.databinding.ActivityMainBinding
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.example.tubes.room.user.User
 import com.example.tubes.room.UserDB
 import com.example.tubes.room.user.UserDAO
+import com.shashank.sony.fancytoastlib.FancyToast
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
             username = findViewById(R.id.textUsername)
             password = findViewById(R.id.textPassword)
 
-            Snackbar.make(mainLayout, "Text Cleared Successfully", Snackbar.LENGTH_LONG).show()
+            FancyToast.makeText(this, "Text Cleared Successfully", FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show()
             username.setText("")
             password.setText("")
         })
@@ -108,9 +108,8 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-
             if(!checkLogin){
-                Snackbar.make(mainLayout, "Username atau Password anda tidak sesuai", Snackbar.LENGTH_LONG).show()
+                FancyToast.makeText(this, "Username atau Password tidak sesuai", FancyToast.LENGTH_LONG, FancyToast.ERROR, true).show()
                 return@OnClickListener
             }
             else{

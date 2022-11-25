@@ -83,4 +83,7 @@ dependencies {
     // Permission Helper
     implementation 'com.github.pankaj89:PermissionHelper:2.3'
 
+    // Fancy Toast
+    implementation 'io.github.shashank02051997:FancyToast:2.0.2'
+
 }
