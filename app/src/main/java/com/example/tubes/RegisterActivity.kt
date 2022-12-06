@@ -5,6 +5,8 @@ import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
+import android.app.PendingIntent.FLAG_IMMUTABLE
+import android.app.PendingIntent.FLAG_MUTABLE
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
@@ -15,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -24,9 +27,11 @@ import com.example.tubes.databinding.ActivityRegisterBinding
 import com.example.tubes.room.UserDB
 import com.example.tubes.room.user.User
 import com.google.android.material.textfield.TextInputLayout
+import com.shashank.sony.fancytoastlib.FancyToast
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.regex.Pattern
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -36,6 +41,15 @@ class RegisterActivity : AppCompatActivity() {
 
     private val CHANNEL_ID_REGISTER = "channel_notification_01"
     private val notificationId = 101
+    val EMAIL_ADDRESS_PATTERN = Pattern.compile(
+        "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
+                "\\@" +
+                "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+                "(" +
+                "\\." +
+                "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+                ")+"
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,61 +68,63 @@ class RegisterActivity : AppCompatActivity() {
 
             val bundle = Bundle()
 
-            CoroutineScope(Dispatchers.IO).launch {
-                if(uname.isEmpty()){
-                    binding?.registerLayoutUsername?.setError("Username tidak boleh kosong")
-                    checkRegistration = false
-                }
-
-                if(pass.isEmpty()){
-                    binding?.registerLayoutPassword?.setError("Password tidak boleh kosong")
-                    checkRegistration = false
-                }
-
-                if(tgl.isEmpty()){
-                    binding?.registerLayoutTanggalLahir?.setError("Tanggal Lahir tidak boleh kosong")
-                    checkRegistration = false
-                }
-
-                if(email.isEmpty()){
-                    binding?.registerLayoutEmail?.setError("Email tidak boleh kosong")
-                    checkRegistration = false
-                }
-
-                if(noTelp.isEmpty()){
-                    binding?.registerLayoutNoTelp?.setError("Nomor Telepon tidak boleh kosong")
-                    checkRegistration = false
-                }
-
-                if(
-                    !uname.isEmpty()
-                    && !pass.isEmpty()
-                    && !tgl.isEmpty()
-                    && !email.isEmpty()
-                    && !noTelp.isEmpty()
-                ) checkRegistration = true
-
-                // Store registration data after validation
-                if(checkRegistration == true){
-                    val user = User(0, uname, pass, tgl, email, noTelp)
-                    userDAO.addUser(user)
-
-                    bundle.putString("username", uname)
-                    bundle.putString("password", pass)
-                    moveLogin.putExtras(bundle)
-
-                    val bitmap: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.logo)
-                    createNotificationChannel()
-                    sendNotification(
-                        binding?.registerLayoutUsername?.getEditText()?.getText().toString(),
-                        Bitmap.createScaledBitmap(bitmap, 300, 100, false)
-                    )
-                    startActivity(moveLogin)
-                }
+            if(uname.isEmpty()){
+                FancyToast.makeText(this, "Username tidak boleh kosong", FancyToast.LENGTH_SHORT, FancyToast.WARNING, true).show()
+                checkRegistration = false
             }
 
-            if(!checkRegistration)
+            if(pass.isEmpty()){
+                FancyToast.makeText(this, "Password tidak boleh kosong", FancyToast.LENGTH_SHORT, FancyToast.WARNING, true).show()
+                checkRegistration = false
+            }
+
+            if(tgl.isEmpty()){
+                FancyToast.makeText(this, "Tgl Lahir tidak boleh kosong", FancyToast.LENGTH_SHORT, FancyToast.WARNING, true).show()
+                checkRegistration = false
+            }
+
+            if(email.isEmpty() || !EMAIL_ADDRESS_PATTERN.matcher(email).matches()){
+                FancyToast.makeText(this, "Email harus sesuai dan tidak boleh kosong", FancyToast.LENGTH_SHORT, FancyToast.WARNING, true).show()
+                checkRegistration = false
+            }
+
+            if(noTelp.isEmpty()){
+                FancyToast.makeText(this, "Nomor Telepon tidak boleh kosong", FancyToast.LENGTH_SHORT, FancyToast.WARNING, true).show()
+                checkRegistration = false
+            }
+
+            if(
+                !uname.isEmpty()
+                && !pass.isEmpty()
+                && !tgl.isEmpty()
+                && !email.isEmpty()
+//                && !EMAIL_ADDRESS_PATTERN.matcher(email).matches()
+                && !noTelp.isEmpty()
+            ) checkRegistration = true
+
+            if(checkRegistration == true){
+                CoroutineScope(Dispatchers.IO).launch {
+                    // Store registration data after validation
+                    if(checkRegistration == true){
+                        val user = User(0, uname, pass, tgl, email, noTelp)
+                        userDAO.addUser(user)
+
+                        bundle.putString("username", uname)
+                        bundle.putString("password", pass)
+                        moveLogin.putExtras(bundle)
+
+//                        val bitmap: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.logo)
+//                        createNotificationChannel()
+//                        sendNotification(
+//                            binding?.registerLayoutUsername?.getEditText()?.getText().toString(),
+//                            Bitmap.createScaledBitmap(bitmap, 300, 100, false)
+//                        )
+                        startActivity(moveLogin)
+                    }
+                }
+            } else{
                 return@OnClickListener
+            }
         })
     }
 
@@ -131,7 +147,7 @@ class RegisterActivity : AppCompatActivity() {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
 
-        val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
+        val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, FLAG_IMMUTABLE)
         val broadcastIntent = Intent(this, NotificationReceiver::class.java)
         broadcastIntent.putExtra("toastMessage", "Akun " + user + " Berhasil dibuat!")
         val actionIntent: PendingIntent = PendingIntent.getBroadcast(this, 0, broadcastIntent, PendingIntent.FLAG_UPDATE_CURRENT)

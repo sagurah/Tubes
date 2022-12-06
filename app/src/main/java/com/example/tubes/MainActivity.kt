@@ -80,32 +80,36 @@ class MainActivity : AppCompatActivity() {
             var uname = username.text.toString()
             var pass = password.text.toString()
 
-            // Soal nomor 4 (Plis bener)
-            CoroutineScope(Dispatchers.IO).launch {
-                if(uname.isEmpty())
-                    username.setError("Username must be filled with text")
+            if(uname.isEmpty()) {
+                FancyToast.makeText(this, "Username tidak boleh kosong", FancyToast.LENGTH_SHORT, FancyToast.ERROR, true).show()
                 checkLogin = false
+            }
 
-                if(pass.isEmpty())
-                    password.setError("Password must be filled with text")
+            if(pass.isEmpty()){
+                FancyToast.makeText(this, "Password tidak boleh kosong", FancyToast.LENGTH_SHORT, FancyToast.ERROR, true).show()
                 checkLogin = false
+            }
 
-                if (bundle != null) {
-                    if(
-                        uname == bundle.getString("username")
-                        && pass == bundle.getString("password")
-                    ) checkLogin = true
+            if (bundle != null) {
+                uname == bundle.getString("username") && pass == bundle.getString("password")
+            }
+
+            if(!uname.isEmpty() && !pass.isEmpty()) {
+                CoroutineScope(Dispatchers.IO).launch {
+                    val user = userDAO.getUserByCreds(uname, pass)
+
+                    if(user != null){
+                        sharedPreferences = getSharedPreferences("myPref", Context.MODE_PRIVATE)
+                        val editor: SharedPreferences.Editor = sharedPreferences!!.edit()
+                        editor.putString("id", user.id.toString())
+                        editor.apply()
+                        checkLogin = true
+                    } else{
+                        checkLogin = false
+                    }
                 }
-
-                val user = userDAO.getUserByCreds(uname, pass)
-
-                if(user != null){
-                    sharedPreferences = getSharedPreferences("myPref", Context.MODE_PRIVATE)
-                    val editor: SharedPreferences.Editor = sharedPreferences!!.edit()
-                    editor.putString("id", user.id.toString())
-                    editor.apply()
-                    checkLogin = true
-                }
+            } else{
+                return@OnClickListener
             }
 
             if(!checkLogin){

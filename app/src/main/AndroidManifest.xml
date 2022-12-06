@@ -20,18 +20,18 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tubes"
         tools:targetApi="31">
         <activity
             android:name=".AddPlansActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".EditPlansActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".EditActivity"
             android:exported="false" /> <!-- <activity -->
@@ -48,7 +48,7 @@
             android:exported="false"/>
         <activity
             android:name=".RegisterActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity android:name=".MainActivity" />
         <activity
             android:name=".FTOActivity"
