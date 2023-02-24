@@ -1,4 +1,5 @@
 # Tugas Besar PBP A - Kelompok 12
+Tugas Besar Pemrograman Berbasis Platform menggunakan Kotlin.
 
 ## Deskripsi Aplikasi
 Gymmers merupakan aplikasi android yang dapat memudahkan admin sebuah gym untuk melakukan CRUD Data jadwal training para trainer yang ada pada gym.
